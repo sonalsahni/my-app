@@ -9,7 +9,6 @@ form{
 }
 fieldset{
   border-radius: 10px;
-  margin: 10px;
   box-shadow: 0 0 1em darkslategray;
   background-color: #d3d3d3;
 }
@@ -19,17 +18,14 @@ label{
   text-align: right;
 }
 input{
-  margin:10px;
+  margin-left: 10px;
 }
 p{
-  margin: 10px;
-  font-size: 10px;
+  font-size: 15px;
+  text-align: right;
 }
 .weak{
   color: red;
-}
-.med{
-  color: gold;
 }
 .good{
   color:green;

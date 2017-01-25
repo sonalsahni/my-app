@@ -46,11 +46,40 @@ function TelNumber(props) {
     <p className="good">Valid.</p>
   )
 }
-
+function ValidMail(props) {
+  const mail=props.value.toString();
+  const chek= new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+  if(mail.length === 0){
+    return (<p> </p>)
+  }
+  if(!chek.test(mail)) {
+      return (
+        <p className="weak">Please enter a valid email id</p>
+      )
+    }
+  return(
+        <p className="good">Valid.</p>
+  )
+}
+function ValidName(props) {
+  const username=props.value.toString();
+  const chek= new RegExp(/[A-Za-z\s]/);
+  if(username.length === 0){
+    return (<p> </p>);
+  }
+  if(!chek.test(username)) {
+      return (
+        <p className="weak">Please enter a valid name</p>
+      )
+    }
+  return(
+        <p className="good">Valid.</p>
+  )
+}
 class App extends Component {
   constructor(props){
     super(props);
-    this.state={pass:'',mail:'',username:'',phone:'',msg:'false'};
+    this.state={pass:'',mail:'',username:'',phone:'',msg:''};
     this.handleChange= this.handleChange.bind(this);
     this.handleSubmit= this.handleSubmit.bind(this);
   }
@@ -62,8 +91,9 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    alert('Your password was successfully submitted');
     event.preventDefault();
+    alert('Your password was successfully submitted');
+
   }
   render() {
     return (
@@ -76,7 +106,8 @@ class App extends Component {
                   name="username"
                   type="text"
                   value={this.state.username}
-                  onChange={this.handleChange} /><br />
+                  onChange={this.handleChange} />
+          <ValidName value={this.state.username} /><br />
           <label>Enter phone no.:</label>
           <input  name="phone"
                   type="tel"
@@ -88,7 +119,7 @@ class App extends Component {
                   type="email"
                   value={this.state.mail}
                   onChange={this.handleChange} />
-        //  <ValidMail value={this.state.mail} /><br />
+          <ValidMail value={this.state.mail} /><br />
           <label>Enter password:</label>
           <input  name="pass"
                   type="password"
